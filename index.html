@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostar, le Pont entre les Mondes : Un Voyage au Cœur des Balkans </title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      template: {
+                          sable: '#FFEDD5', 
+                          ocre: '#F97316',   // Orange Vibrant (Brand Accent)
+                          roche: '#0F172A',  // Bleu Nuit (Brand Dark)
+                          ciel: '#0D9488',   // Vert Lagon (Brand Primary)
+                          bg: '#FFF7ED'      // C'est un blanc cassé chaud, parfait pour la lecture et le contraste.
+                      }
+                  },
+                  fontFamily: {
+                      sans: ['"Plus Jakarta Sans"', 'sans-serif'], // Nouvelle police corps
+                      serif: ['"Outfit"', 'sans-serif'],           // Nouvelle police titres
+                  }
+              }
+          }
+      }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        
+        /* 2. FORÇAGE DES GRAISSES (Comme sur la Landing Page) */
+        .font-sans { font-weight: 600 !important; }
+        .font-serif { font-weight: 800 !important; }
+
+        /* Ligne verticale de la timeline */
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; margin-left: -1px; }
+        }
+
+        /* Style des cartes Info */
+        .tip-card {
+            border-left: 4px solid #F97316; /* ocre */
+            background-color: #FFF7ED;
+        }
+
+        /* Masquer la scrollbar de la nav mobile tout en gardant le scroll */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-template-bg text-template-roche antialiased">
+    
+    <nav id="nav-desktop" class="hidden md:flex fixed top-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200 py-4 px-8 justify-between items-center shadow-sm transition-transform duration-300 -translate-y-full">
+        <a href="#top" class="text-xl font-serif font-bold tracking-widest text-template-roche">MyTrip<span class="text-template-ocre">Planner</span></a>
+        <div class="space-x-6 text-sm font-bold text-gray-600">
+            <a href="#jour-1" class="nav-item-desktop hover:text-template-ocre transition">Le Parcours</a>
+            <a href="#pratique" class="nav-item-desktop hover:text-template-ocre transition">Infos Pratiques</a>
+        </div>
+    </nav>
+
+    <nav id="nav-mobile" class="md:hidden fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-200 py-3 pl-4 overflow-x-auto hide-scroll whitespace-nowrap shadow-md transition-transform duration-300 -translate-y-full">
+        <div class="flex space-x-2 pr-4" id="mobile-menu-container">
+            <a href="#top" class="inline-block px-3 py-1 bg-template-roche text-white rounded-full text-xs font-bold shadow-sm">Top</a>
+            
+                <a href="#jour-1" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J1 Arrivée et Premiers Pas à Mostar</a>
+            
+                <a href="#jour-2" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J2 Le Cœur Historique de Mostar</a>
+            
+                <a href="#jour-3" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J3 Patrimoine Ottoman et Récits de Guerre</a>
+            
+                <a href="#jour-4" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J4 Évasion Naturelle et Villages Historiques</a>
+            
+                <a href="#jour-5" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J5 Les Chutes de Kravica et Saveurs Locales</a>
+            
+                <a href="#jour-6" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J6 Mostar Moderne et Mémoire</a>
+            
+                <a href="#jour-7" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J7 Derniers Souvenirs et Départ</a>
+            
+            <a href="#pratique" class="mobile-link inline-block px-3 py-1 border border-gray-300 text-gray-500 rounded-full text-xs font-bold">Infos</a>
+        </div>
+    </nav>
+
+    <header id="top" class="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/header.png" || 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021'}');">
+        
+        <div class="relative z-20 text-center text-white px-4 max-w-3xl animate-fade-in-up">
+            <p class="font-sans text-template-sable tracking-[0.2em] mb-4 uppercase text-xs font-bold">Feuille de Route</p>
+            <h1 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-lg">MOSTAR</h1>
+            <p class="font-sans text-lg md:text-xl text-gray-100 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">Mostar, le Pont entre les Mondes : Un Voyage au Cœur des Balkans</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-bold mb-10">
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🗓️ 7 jours</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">💰 2400€</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🛬 environ 22h avec 2 escales depuis Pages, Haïti</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="itineraire" class="max-w-6xl mx-auto px-4 py-16 relative">
+        <div class="text-center mb-16">
+            <h2 class="text-template-ocre font-bold tracking-normal text-4xl mt-2 uppercase font-serif">Votre Roadtrip</h2>
+        </div>
+
+        <div class="relative">
+            <div class="timeline-line"></div>
+            
+                <div id="jour-1" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 1</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Arrivée et Premiers Pas à Mostar</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après un long voyage, cette première journée est dédiée à une arrivée en douceur. Installez-vous confortablement dans votre hôtel et laissez-vous imprégner par l'atmosphère unique de Mostar. Une balade légère autour du célèbre Vieux Pont sera parfaite pour une première immersion, sans précipitation, juste pour le plaisir de la découverte.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🛬 <strong>Arrivée à Mostar</strong>: Atterrissage à l'aéroport de Sarajevo (SJJ) ou Split (SPU), suivi d'un transfert en bus ou taxi vers Mostar. Le trajet offre déjà un aperçu des paysages balkaniques.</li><li>🛏️ <strong>Installation à l'hôtel</strong>: Prenez le temps de vous enregistrer dans votre hôtel 3 étoiles et de vous rafraîchir. Profitez de ce moment pour vous détendre après le voyage.</li><li>🚶‍♂️ <strong>Balade autour du Stari Most</strong>: Une promenade tranquille dans les environs du Vieux Pont, sans le traverser encore. Observez l'architecture ottomane et ressentez l'énergie de la ville qui s'éveille au crépuscule.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/jour1.jpg" class="w-full h-64 object-cover" alt="Jour 1">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">ℹ️ Monnaie locale</p>
+                                <p class="text-gray-700">La monnaie est le Mark convertible (BAM). 1€ équivaut à environ 1.95 BAM. Les cartes sont acceptées, mais ayez du liquide pour les petits commerces.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🗣️ Langue</p>
+                                <p class="text-gray-700">Les langues officielles sont le bosnien, le croate et le serbe. L'anglais est généralement parlé dans les zones touristiques.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-2" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 2</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Le Cœur Historique de Mostar</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Plongez au cœur de l'histoire de Mostar en explorant ses sites emblématiques. Le Stari Most, symbole de résilience, et le Vieux Bazar vous transporteront dans un autre temps. Cette journée est une immersion profonde dans le patrimoine ottoman et la culture locale, ponctuée par des vues imprenables sur la Neretva.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚶‍♀️ <strong>Traversée du Stari Most</strong>: Marchez sur le célèbre Vieux Pont, reconstruit après la guerre, et admirez l'ingénierie ottomane. C'est un moment fort, offrant des vues spectaculaires sur la rivière Neretva.</li><li>🛍️ <strong>Exploration du Vieux Bazar (Kujundžiluk)</strong>: Flânez dans les ruelles pavées du Vieux Bazar, bordées de boutiques d'artisans vendant des souvenirs, des bijoux en cuivre et des tapis traditionnels. C'est l'endroit idéal pour dénicher des trésors locaux.</li><li>🕌 <strong>Visite de la Mosquée Koski Mehmed-Pasha</strong>: Montez au minaret de cette mosquée pour une vue panoramique inégalée sur le Stari Most et la vieille ville. L'intérieur de la mosquée est également d'une grande beauté.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/jour2.jpg" class="w-full h-64 object-cover" alt="Jour 2">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🏊 Les Plongeurs du Pont</p>
+                                <p class="text-gray-700">En été, vous pourrez assister aux plongeons spectaculaires des jeunes hommes de Mostar depuis le Stari Most, une tradition ancestrale et un véritable rite de passage.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">☕ Pause Café</p>
+                                <p class="text-gray-700">Goûtez au café bosnien traditionnel, servi dans une džezva avec un rahat lokum (loukoum). C'est une expérience culturelle à part entière.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-3" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 3</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Patrimoine Ottoman et Récits de Guerre</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Cette journée vous emmène au-delà des sites les plus connus pour découvrir des joyaux cachés de l'architecture ottomane et comprendre l'histoire récente de Mostar. Entre demeures historiques et expositions poignantes, vous saisirez mieux la complexité et la résilience de cette ville fascinante.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🏡 <strong>Visite de la Maison Muslibegović</strong>: Explorez cette maison ottomane magnifiquement préservée, transformée en musée et hôtel. Elle offre un aperçu authentique de la vie d'une famille noble bosnienne au XVIIIe siècle.</li><li>🌉 <strong>Découverte du Pont Tordu (Kriva Ćuprija)</strong>: Ce petit pont en pierre, réplique miniature du Stari Most, est un charmant prélude à son grand frère. Il est idéal pour une photo paisible et pour apprécier l'ingéniosité architecturale.</li><li>📸 <strong>Exposition de Photos de Guerre de Mostar</strong>: Visitez une des expositions dédiées à la guerre de Bosnie, comme celle près du Stari Most. Ces images poignantes offrent une perspective cruciale sur le passé récent de la ville et sa reconstruction.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/jour3.jpg" class="w-full h-64 object-cover" alt="Jour 3">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Perspective Historique</p>
+                                <p class="text-gray-700">Comprendre l'histoire de la guerre est essentiel pour apprécier la résilience de Mostar. Les expositions sont souvent gérées par des témoins directs.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚶 Chaussures Confortables</p>
+                                <p class="text-gray-700">Les rues pavées de Mostar peuvent être glissantes et inégales, prévoyez des chaussures confortables et antidérapantes.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-4" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 4</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Évasion Naturelle et Villages Historiques</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Aujourd'hui, quittez l'effervescence de Mostar pour une excursion d'une journée dans les environs. Vous découvrirez la sérénité du monastère de Blagaj, niché au pied d'une falaise, et le charme intemporel du village médiéval de Počitelj. Une journée riche en paysages et en histoire.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🕌 <strong>Visite du Tekke de Blagaj</strong>: Explorez ce monastère derviche du XVIe siècle, construit à l'embouchure de la rivière Buna, émergeant d'une grotte. Le cadre est d'une beauté naturelle et spirituelle saisissante.</li><li>🏰 <strong>Exploration du village de Počitelj</strong>: Montez à travers ce village médiéval ottoman fortifié, classé au patrimoine mondial de l'UNESCO. Ses maisons en pierre, sa mosquée et sa forteresse offrent des vues imprenables sur la Neretva.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/jour4.jpg" class="w-full h-64 object-cover" alt="Jour 4">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚗 Transport pour l'excursion</p>
+                                <p class="text-gray-700">Vous pouvez louer une voiture, prendre un taxi ou participer à une visite organisée pour ces sites. C'est le moyen le plus pratique.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">👗 Code Vestimentaire</p>
+                                <p class="text-gray-700">Pour le Tekke de Blagaj, prévoyez des vêtements couvrant les épaules et les genoux. Des foulards sont souvent disponibles à l'entrée pour les femmes.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-5" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 5</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Les Chutes de Kravica et Saveurs Locales</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après les découvertes historiques, place à la nature luxuriante et aux plaisirs gustatifs. Les magnifiques chutes de Kravica vous offriront un moment de fraîcheur et de détente. En soirée, plongez dans la gastronomie bosnienne, riche en saveurs et en traditions.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🌊 <strong>Détente aux Chutes de Kravica</strong>: Passez la matinée à admirer les impressionnantes cascades de Kravica, souvent comparées à des "petites Plitvice". En été, la baignade est possible dans les eaux turquoise.</li><li>🍽️ <strong>Dégustation de la cuisine bosnienne</strong>: Retour à Mostar pour un dîner typique. Goûtez au ćevapi (brochettes de viande hachée), au burek (feuilleté farci) ou au dolma (légumes farcis). Les restaurants locaux offrent une cuisine savoureuse et généreuse.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/jour5.jpg" class="w-full h-64 object-cover" alt="Jour 5">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">☀️ Meilleure période</p>
+                                <p class="text-gray-700">Les chutes de Kravica sont particulièrement belles au printemps, lorsque le débit d'eau est maximal, ou en été pour la baignade.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🍲 Spécialités culinaires</p>
+                                <p class="text-gray-700">Ne manquez pas le "Bosanski Lonac" (pot bosnien), un ragoût de viande et de légumes mijoté, et les "Hurmašice" pour le dessert.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-6" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 6</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Mostar Moderne et Mémoire</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Cette journée est consacrée à la découverte de l'autre facette de Mostar, celle qui témoigne de son passé plus récent et de sa reconstruction. Du côté est de la ville, vous explorerez des sites qui racontent l'histoire de la guerre et la résilience de ses habitants, tout en profitant de l'ambiance locale.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚶‍♂️ <strong>Exploration de la Place d'Espagne et de la Tour du Sniper</strong>: La Place d'Espagne est un point de rencontre moderne. À proximité, la Tour du Sniper (ancienne banque) est un vestige poignant de la guerre, offrant une perspective sur les cicatrices encore visibles de la ville.</li><li>🌳 <strong>Visite du Mémorial des Partisans</strong>: Ce monument brutaliste, conçu par Bogdan Bogdanović, est un lieu de recueillement dédié aux victimes antifascistes de la Seconde Guerre mondiale. Son architecture est impressionnante et son histoire est profonde.</li><li>🎨 <strong>Découverte du Street Art</strong>: Mostar est également connue pour son street art vibrant, souvent porteur de messages de paix et de réconciliation. Promenez-vous dans les rues pour admirer ces œuvres colorées qui animent la ville.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/jour6.jpg" class="w-full h-64 object-cover" alt="Jour 6">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🤝 Réconciliation</p>
+                                <p class="text-gray-700">Mostar est une ville divisée par la guerre, mais elle est aussi un symbole de réconciliation et de coexistence, visible à travers ses efforts de reconstruction et ses initiatives culturelles.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🗺️ Orientation</p>
+                                <p class="text-gray-700">La ville est divisée par la rivière Neretva, avec des influences culturelles différentes sur chaque rive. N'hésitez pas à explorer les deux côtés.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-7" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 7</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Derniers Souvenirs et Départ</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Profitez de cette dernière matinée pour savourer un dernier petit-déjeuner bosnien, faire quelques emplettes de dernière minute ou revisiter un lieu coup de cœur. Il est temps de dire au revoir à Mostar, emportant avec vous des souvenirs inoubliables de cette ville au charme unique et à l'histoire poignante.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🎁 <strong>Achats de souvenirs de dernière minute</strong>: Profitez des dernières heures pour acheter des cadeaux artisanaux, des épices locales ou des produits typiques du Vieux Bazar. C'est l'occasion de ramener un morceau de Mostar chez vous.</li><li>☕ <strong>Dernier café avec vue</strong>: Installez-vous dans un café avec vue sur le Stari Most ou la Neretva pour un dernier moment de contemplation. Imprégnez-vous une dernière fois de l'ambiance de la ville.</li><li>✈️ <strong>Transfert vers l'aéroport et départ</strong>: Organisez votre transfert vers l'aéroport de Sarajevo ou Split pour votre vol retour. Gardez en mémoire les images et les émotions de ce voyage mémorable.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Mostar-993zlaeg699x3q4/main/jour7.jpg" class="w-full h-64 object-cover" alt="Jour 7">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⏰ Heure de départ</p>
+                                <p class="text-gray-700">Prévoyez suffisamment de temps pour le transfert vers l'aéroport, surtout si vous partez de Sarajevo ou Split (environ 2-3 heures de route).</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🧳 Bagages</p>
+                                <p class="text-gray-700">Assurez-vous que vos souvenirs respectent les restrictions de poids et de taille de votre compagnie aérienne.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+        </div>
+    </section>
+
+    <section id="pratique" class="bg-white border-t border-gray-200 pt-12 pb-12 scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>💴</span> Budget
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget vol: </strong>1500€/pers (Vol aller-retour Pages, Haïti - Sarajevo/Split en classe économique avec escales)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget transports: </strong>100€/pers (Transferts aéroport, bus locaux, taxi pour excursions)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget repas: </strong>245€/pers (Environ 35€/jour pour 7 jours, repas dans des restaurants de gamme moyenne)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget logement: </strong>420€/pers (7 nuits en hôtel 3 étoiles, environ 60€/nuit)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget activités: </strong>120€/pers (Entrées musées, sites historiques, excursions)</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>☀️</span> Périodes Idéales
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">Les périodes idéales pour ce séjour sont les mois de mai et septembre.</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>📃</span> Infos pratiques
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🇧🇦 La Bosnie-Herzégovine est un pays des Balkans, riche d'une histoire complexe et d'une culture influencée par les empires ottoman et austro-hongrois.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">👥 La population de Mostar est multi-ethnique, avec des communautés bosniaques, croates et serbes. La ville est un symbole de coexistence et de résilience après la guerre des années 90.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">💡 Une anecdote insolite : le Stari Most est un pont sans fondations. Il repose uniquement sur la roche des deux rives, une prouesse architecturale de l'époque ottomane.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">❤️ Le pays est connu pour son hospitalité chaleureuse et sa cuisine savoureuse, mélange d'influences orientales et occidentales.</p>
+                
+            </div>            
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>🔗</span> Liens Utiles
+                </h4>
+                <ul class="text-sm space-y-3">
+                  <li><a href="https://mytripplanner-dotfr.github.io/Mostar-993zlaeg699x3q4/map.html" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🗺️ Carte Interactive</strong></a></li>
+                    
+                        <li><a href="https://www.bhtourism.ba/eng/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>📘 Tourisme Bosnie-Herzégovine</strong></a></li>
+                    
+                        <li><a href="https://www.autobusni-kolodvor.com/en/bus-station/mostar/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🚌 Gare routière de Mostar</strong></a></li>
+                    
+                        <li><a href="https://www.accuweather.com/fr/ba/mostar/300403/weather-forecast/300403" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🌤️ Météo Mostar</strong></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200 py-6">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="font-serif text-lg text-template-roche mb-2 font-bold">
+                MyTrip<span class="text-template-ocre">Planner</span>
+            </p>
+
+                <div class="flex justify-center gap-4 text-[10px] md:text-xs text-slate-500 mb-4 font-semibold">
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Mentions Légales</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">CGU</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Confidentialité</a>
+                </div>
+
+            <p class="text-[10px] text-gray-400 mb-2">
+                &copy; 2025 MyTripPlanner. Tous droits réservés.
+            </p>
+
+            <div class="flex justify-center">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest px-2 py-0.5 border border-gray-200 rounded-full inline-block">
+                    🤖 Contenu généré par IA
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion Scroll & Menu
+        const navDesktop = document.getElementById('nav-desktop');
+        const navMobile = document.getElementById('nav-mobile');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                navDesktop.classList.remove('-translate-y-full');
+                navMobile.classList.remove('-translate-y-full');
+            } else {
+                navDesktop.classList.add('-translate-y-full');
+                navMobile.classList.add('-translate-y-full');
+            }
+        });
+        
+        // Active Link Highlighter
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    document.querySelectorAll('.mobile-link').forEach(link => {
+                        const linkHref = link.getAttribute('href').substring(1);
+                        if (linkHref === activeId) {
+                            link.classList.remove('bg-gray-100', 'text-gray-700');
+                            link.classList.add('bg-template-ocre', 'text-white', 'shadow-md');
+                            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        } else {
+                            link.classList.add('bg-gray-100', 'text-gray-700');
+                            link.classList.remove('bg-template-ocre', 'text-white', 'shadow-md');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+
+        document.querySelectorAll('div[id^="jour-"], section#pratique').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
